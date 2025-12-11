@@ -1,15 +1,76 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner leitura = new Scanner(System.in);
+
+        String nome = "Mariana";
+        String tipoConta = "Corrente";
+        double saldo = 2000;
+
+        System.out.println("****************************");
+        System.out.println("Dados iniciais do cliente: ");
+        System.out.println("Nome: " + nome);
+        System.out.println("Tipo conta: " + tipoConta);
+        System.out.println("Saldo inicial: R$ " + saldo);
+        System.out.println("****************************");
+
+        int opcao = 0;
+
+        while (opcao != 4) {
+
+            System.out.println("""
+                    Operações:
+                    1.Consultar saldos
+                    2.Recebe valor
+                    3.Transferir valor
+                    4.Sair
+                    Digite a opção desejada:
+                    """);
+
+            opcao = leitura.nextInt();
+
+            if (opcao == 1) { //Consulta de saldo
+
+                System.out.println("Seu saldo é: " + saldo);
+
+            } else if (opcao == 2) { //Recebe valor
+
+                System.out.println("Valor que deseja adicionar: ");
+                double acrescimo = leitura.nextDouble();
+
+                double novoSaldoAdicional = saldo + acrescimo;
+
+                System.out.println("Seu novo saldo é: " + novoSaldoAdicional);
+
+            } else if (opcao == 3) { //Transferência
+
+                System.out.println("Valor que deseja transferir: ");
+                double decrescimo = leitura.nextDouble();
+
+                double novoSaldoDecrescimo = saldo - decrescimo;
+
+                System.out.println("Seu novo saldo é: " + novoSaldoDecrescimo);
+
+                if (novoSaldoDecrescimo < 0) {
+
+                    System.out.println("Não foi possível realizar a transferência, saldo inuficiente!");
+
+                }
+
+            } else if (opcao == 4) { //Sair
+
+                System.out.println("Encerrando aplicação!");
+
+            } else { //Nenhuma das oções
+
+                System.out.println("Opção inválida!");
+
+            }
+
         }
+
     }
 }
